@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 function AdminDash() {
-  const {pathname} = useLocation();
+  const {pathname} = useLocation(); 
 
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);

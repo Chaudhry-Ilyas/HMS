@@ -16,7 +16,7 @@ import AdminAttendance from './Pages/Admin/AdminAttendance';
 import AdminMain from './Pages/Admin/AdminMain';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from './context';
-function App() {
+function App() { 
   const {pathname} = useLocation()
   const [search,setSearch]=useState("");
   const [filter,setfilter]=useState("");
