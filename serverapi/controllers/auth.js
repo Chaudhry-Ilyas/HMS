@@ -57,6 +57,7 @@ export const login = async (req, res) => {
         console.log(user)
         if(!user) return res.status(400).send("No User found!");
         /* check password */
+        
         const match = await comparePassword(password, user.password);
         if(!match) return res.status(400).send("Password not matched");
 

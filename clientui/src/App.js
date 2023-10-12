@@ -14,8 +14,10 @@ import AdminStaff from './Pages/Admin/AdminStaff';
 import AdminPatients from './Pages/Admin/AdminPatients';
 import AdminAttendance from './Pages/Admin/AdminAttendance';
 import AdminMain from './Pages/Admin/AdminMain';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from './context';
+import Doctordash from './Pages/Doctor/Doctordash';
 function App() { 
   const {pathname} = useLocation()
   const [search,setSearch]=useState("");
@@ -57,7 +59,7 @@ function App() {
        <Route path='/admin/Staff' element={<AdminStaff/>} />
        <Route path='/admin/Patients' element={<AdminPatients/>} />
        <Route path='/admin/Attendance' element={<AdminAttendance/>} />
-     
+       <Route path='/doctor/Dashboard' element={<Doctordash/>} />
 
     </Routes> 
     </div>

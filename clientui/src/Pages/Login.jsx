@@ -30,7 +30,7 @@ const Login = () => {
         {data.user && data.user.role && data.user.role.includes("Admin") ? (
           history("/admin/Dashboard"))
          :
-         history("/admin/Dashboard")
+         history("/doctor/Dashboard")
         
          }
       
