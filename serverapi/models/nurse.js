@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const nurseSchema = new Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
     firstname: {
         type: String,
         trim: true,
