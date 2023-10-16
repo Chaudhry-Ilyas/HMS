@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const staffSchema = new Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
 
     firstname: {
         type: String,
@@ -19,12 +23,8 @@ const staffSchema = new Schema({
         trim: true,
         required: true
     },
-    attendance: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    role: {
+    
+    staffrole: {
         type: [String],
         
         enum: ["Sweeper", "Receptionist", "Guard"]

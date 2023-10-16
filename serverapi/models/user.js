@@ -22,7 +22,7 @@ const userSchema = new Schema({
     role: {
         type: [String],
         
-        enum: ["Admin", "Doctor", "Nurse"]
+        enum: ["Admin", "Doctor", "Nurse","Staff"]
     },
     stripe_account_id: "",
     stipe_seller: {},
