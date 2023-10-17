@@ -1,13 +1,18 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-const { ObjectId } = require('mongodb');
+
 
 const complainSchema = new Schema({
 
    
-    PatientID: ObjectId,
+    patientId: {
+        type: String,
+        trim: true,
+        required: true
+      },
+
     description: {
-        type: string,
+        type: String,
         trim: true,
         required: true
     },
