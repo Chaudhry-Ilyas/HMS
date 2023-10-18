@@ -4,7 +4,15 @@ const { ObjectId } = require('mongodb');
 
 const attendanceSchema = new Schema({
 
-    UserID: ObjectId,
+    userId: { type: String, 
+        trim: true,
+        required: true
+         },
+         username: { type: String, 
+            trim: true,
+            required: true
+             },
+
     date: {
         type: Date,
         trim: true,
