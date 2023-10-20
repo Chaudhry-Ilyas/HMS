@@ -4,9 +4,9 @@ const { ObjectId } = require('mongodb');
 
 const appointmentSchema = new Schema({
 
-    DoctorID: ObjectId,
-    NurseID: ObjectId,
-    PatientID: ObjectId,
+    doctorId: { type: Schema.Types.ObjectId, ref: 'Doctors' },
+    nurseId: { type: Schema.Types.ObjectId, ref: 'Nurse' },
+    patientId: { type: Schema.Types.ObjectId, ref: 'Patients' },
     date: {
         type: Date,
         trim: true,
