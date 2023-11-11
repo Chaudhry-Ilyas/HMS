@@ -1,6 +1,7 @@
 import Attendance from"../models/attendance"
 import { hashPassword } from "../utils/auth";
 import User from '../models/user'
+import Doctors from '../models/doctors'
 
 export const AddAttendance = async (req, res) => {
 
@@ -70,6 +71,43 @@ export const getAttendances = async (req, res) => {
     }
 }
 
+export const getDoctorsAttendances = async (req, res) => {
+  // console.log("Hello");
+  try {
+   const newdoctors= Doctors.find().populate('user').exec();
+    // Extract doctor IDs
+
+  
+    // Find attendances for doctors
+    const doctorswithuser = newdoctors.map(doctor => {
+        
+     
+      const { _id, date, status } = doctor;
+      const { firstname, lastname } = appointment.patientId; // Access FirstName and LastName
+      const patientName = `${firstname} ${lastname}`;
+      return {
+        _id,
+        date,
+        status,
+        patientId: appointment.patientId._id, // Return PatientID separately
+        firstname,
+        lastname,
+      };
+    });
+    res.json(doctorswithuser);
+  } catch (error) {
+      
+  }
+}
+export const getNursesAttendances = async (req, res) => {
+  // console.log("Hello");
+  try {
+      const attendance = await Attendance.find()
+      return res.json(attendance)
+  } catch (error) {
+      
+  }
+}
 export const getAttendance = async (req, res) => {
    
     try {
