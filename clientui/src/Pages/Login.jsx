@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import {SyncOutlined} from "@ant-design/icons"
+import { CustomButton } from "../Components/Button";
 
 const Login = () => {
   const [formData, setFormData] = useState({});
@@ -27,9 +28,14 @@ const Login = () => {
         localStorage.setItem("token", JSON.stringify(data.token));
         localStorage.setItem("user", JSON.stringify(data.user));
         
-        {data.user && data.user.role && data.user.role.includes("Admin") ? (
-          history("/admin/Dashboard"))
-         :
+        if(data.user && data.user.role && data.user.role.includes("Admin")){
+          history("/admin/Dashboard")
+        } 
+        else if( data.user && data.user.role && data.user.role.includes("Nurse")) {
+          history("/nurse/Dashboard")
+        }
+           
+         else{
          history("/doctor/Dashboard")
         
          }
