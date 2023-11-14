@@ -35,7 +35,7 @@ export const getAppointments = async (req, res) => {
       .find()
       .populate('patientId','firstname lastname')
       .exec();
-
+      
     const appointmentsWithPatientNames = appointments.map(appointment => {
         
       if (!appointment.patientId) {
