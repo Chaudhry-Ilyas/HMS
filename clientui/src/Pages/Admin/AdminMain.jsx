@@ -1,5 +1,6 @@
 import { React } from 'react'
 import AdminDash from './AdminDash';
+import { Button } from '../../Components/Button';
 
 function AdminMain() {
   return (
@@ -25,6 +26,7 @@ function AdminMain() {
           Appointments
         </b>
       </div>
+
       <div className="absolute w-[calc(100%_-_1185px)] top-[118px] right-[599px] left-[586px] h-[88px]">
         <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px]">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-lg bg-neutral-white shadow-[0px_12px_26px_rgba(16,_30,_115,_0.06)]" />
@@ -491,6 +493,7 @@ function AdminMain() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

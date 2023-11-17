@@ -116,12 +116,12 @@ const AdminPatients = () => {
         const {data} = await axios.post("http://localhost:8000/patient/add", {
          
       
-        firstname: formData.FirstName,
-          lastname: formData.LastName,
-          dateofbirth: formData.DateOfBirth,
-          gender: formData.Gender,
+        firstname: formData.firstname,
+          lastname: formData.lastname,
+          dateofbirth: formData.dateofbirth,
+          gender: formData.gender,
   
-          contactdetails: formData.ContactDetails,
+          contactdetails: formData.contactdetails,
           
           
           
@@ -151,6 +151,8 @@ const AdminPatients = () => {
     const delPatient = async(id) => {
       try {
         const data = await axios.delete(`http://localhost:8000/patients/${id}`)
+        getPatients()
+
       } catch (error) {
         
       }
@@ -180,53 +182,53 @@ const AdminPatients = () => {
                 <Form.Item label="First Name" name="FirstName">
                   <Input
                     placeholder="FirstName"
-                    value={formData.FirstName}
+                    value={formData.firstname}
                     defaultValue={isEdit ? editPatient?.firstname : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, FirstName: e.target.value })
+                      setFormData({ ...formData, firstname: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Last Name" name="LastName">
                   <Input
                     placeholder="LastName"
-                    value={formData.LastName}
+                    value={formData.lastname}
                     defaultValue={isEdit ? editPatient?.lastname : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, LastName: e.target.value })
+                      setFormData({ ...formData, lastname: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Date Of Birth" name="Date Of Birth">
                   <Input
                     placeholder="yyyy/mm/dd"
-                    value={formData.DateOfBirth}
+                    value={formData.dateofbirth}
                     
-                    defaultValue={isEdit ? editPatient?.dateOfbirth : ""}
+                    defaultValue={isEdit ? editPatient?.dateofbirth : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, DateOfBirth: e.target.value })
+                      setFormData({ ...formData, dateofbirth: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Gender" name="Gender">
                   <Dropdown
                     options={options}
-                    value={ formData.Gender}
+                    value={ formData.gender}
                     placeholder="Select an option"
                     // defaultValue={isEdit ? editProduct?.category : ""}
 
                     onChange={(e) =>
-                      setFormData({ ...formData, Gender: e.value })
+                      setFormData({ ...formData, gender: e.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Contact Details" name="Contact Details">
                   <Input
                     placeholder="Contact Details"
-                    value={formData.ContactDetails}
+                    value={formData.contactdetails}
                     defaultValue={isEdit ? editPatient?.contactdetails : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, ContactDetails: e.target.value })
+                      setFormData({ ...formData, contactdetails: e.target.value })
                     }
                   />
                 </Form.Item>

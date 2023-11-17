@@ -152,17 +152,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
       setLoading(true);
       const {data} = await axios.post("http://localhost:8000/doctor/add", {
        
-      username: formData.Username,
-        password: formData.Password,
+      username: formData.username,
+        password: formData.password,
         role:"Doctor",
         image:image.Location,  
-      firstname: formData.FirstName,
-        lastname: formData.LastName,
-        email: formData.Email,
-        qualification: formData.Qualification,
+      firstname: formData.firstname,
+        lastname: formData.lastname,
+        email: formData.email,
+        qualification: formData.qualification,
 
-        specialties: formData.Specialties,
-        experience: formData.Experience,
+        specialties: formData.specialties,
+        experience: formData.experience,
         
         
         
@@ -182,7 +182,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
   const editData = async () => {
     try {
-      const {data} = await axios.put(`http://localhost:8000/doctor/${editDoctor?._id}`, formData );
+      const response = await axios.put(`http://localhost:8000/doctor/${editDoctor?._id}`, formData );
       getDoctors()
       handleClose()
 
@@ -191,6 +191,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   const delDoctor = async(id) => {
     try {
       const data = await axios.delete(`http://localhost:8000/doctors/${id}`)
+      getDoctors()
+
     } catch (error) {
       
     }
@@ -237,91 +239,91 @@ function createData(name, calories, fat, carbs, protein) {
                 <Form.Item label="First Name" name="FirstName">
                   <Input
                     placeholder="FirstName"
-                    value={formData.FirstName}
+                    value={formData.firstname}
                     defaultValue={isEdit ? editDoctor?.firstname : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, FirstName: e.target.value })
+                      setFormData({ ...formData, firstname: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Last Name" name="LastName">
                   <Input
                     placeholder="LastName"
-                    value={formData.LastName}
+                    value={formData.lastname}
                     defaultValue={isEdit ? editDoctor?.lastname : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, LastName: e.target.value })
+                      setFormData({ ...formData, lastname: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Email" name="Email">
                   <Input
                     placeholder="Email"
-                    value={formData.Email}
+                    value={formData.email}
                     defaultValue={isEdit ? editDoctor?.email : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Email: e.target.value })
+                      setFormData({ ...formData, email: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Qualification" name="Qualification">
                   <Input
                     placeholder="Qualification"
-                    value={formData.Qualification}
+                    value={formData.qualification}
                     defaultValue={isEdit ? editDoctor?.qualification : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Qualification: e.target.value })
+                      setFormData({ ...formData, qualification: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Specialties" name="Specialties">
                   <Input
                     placeholder="Specialties"
-                    value={formData.Specialties}
+                    value={formData.specialties}
                     defaultValue={isEdit ? editDoctor?.specialties : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Specialties: e.target.value })
+                      setFormData({ ...formData, specialties: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Experience" name="Experience">
                   <Input
                     placeholder="Experience"
-                    value={formData.Experience}
+                    value={formData.experience}
                     defaultValue={isEdit ? editDoctor?.experience : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Experience: e.target.value })
+                      setFormData({ ...formData, experience: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="UserName" name="UserName">
                   <Input
                     placeholder="UserName"
-                    value={formData.Username}
+                    value={formData.username}
                     defaultValue={isEdit ? editDoctor?.user.username : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Username: e.target.value })
+                      setFormData({ ...formData, username: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Password" name="Password">
                   <Input
                     placeholder="Password"
-                    value={formData.Password}
+                    value={formData.password}
                     defaultValue={isEdit ? editDoctor?.user.password : ""}
                     onChange={(e) =>
-                      setFormData({ ...formData, Password: e.target.value })
+                      setFormData({ ...formData, password: e.target.value })
                     }
                   />
                 </Form.Item>
                 <Form.Item label="Role" name="Role">
                   <Input
                     placeholder="Role"
-                    value={formData.Role}
+                    value={formData.role}
                     defaultValue={"Doctor"}
                     disabled
                     onChange={(e) =>
-                      setFormData({ ...formData, Role: e.target.value })
+                      setFormData({ ...formData, role: e.target.value })
                     }
                   />
                 </Form.Item>

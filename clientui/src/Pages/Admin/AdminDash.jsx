@@ -13,6 +13,7 @@ import { Context } from '../../context';
 import { getLoggedUser } from '../../utils/getLoggedInUser';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Button } from '../../Components/Button';
 
 
 
@@ -31,7 +32,7 @@ function AdminDash() {
 
   const [current, setCurrent] = useState("");
 const user = getLoggedUser()
-console.log(user);
+console.log(pathname);
   
   // useEffect(() => {
   //   process.browser && setCurrent(window.location.pathname);
@@ -81,11 +82,11 @@ console.log(user);
         <div className="absolute w-full top-[86px] right-[0px] left-[0px] h-[88px] text-neutral-gray">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
           <div className="absolute w-[calc(100%_-_48px)] top-[calc(50%_-_30px)] left-[24px] tracking-[0.1px] leading-[20px] inline-block">
-            MEDICINE
+            Admin
           </div>
           <Link to="/admin/Dashboard" style={{textDecoration: 'none'}}> 
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_+_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Dashboard" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link` } style={{textDecoration:'none', color: pathname == "/admin/Dashboard" ? "blue" :"black"}}>
             Dashboard
             </a>
           </b>
@@ -107,7 +108,7 @@ console.log(user);
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
           <Link to="/admin/Doctors" style={{textDecoration: 'none'}}>
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Doctors" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ` } style={{textDecoration:'none', color: pathname == "/admin/Doctors" ? "blue" :"black"}}>
           
             Doctors
             </a>
@@ -124,10 +125,11 @@ console.log(user);
           <Link to="/admin/Nurses" style={{textDecoration: 'none'}}>
           
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Nurses" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ` } style={{textDecoration:'none', color: pathname == "/admin/Nurses" ? "blue" :"black"}}>
          
             Nurses
          </a>
+         
           </b>
           </Link>
           <img
@@ -141,7 +143,7 @@ console.log(user);
           <Link to="/admin/Attendance" style={{textDecoration: 'none'}}>
           
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Attendance" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ` } style={{textDecoration:'none', color: pathname == "/admin/Attendance" ? "blue" :"black"}}>
          
             Attendance
             </a>
@@ -158,7 +160,7 @@ console.log(user);
           <Link to="/admin/Patients" style={{textDecoration: 'none'}}>
          
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Patients" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ` } style={{textDecoration:'none', color: pathname == "/admin/Patients" ? "blue" :"black"}}>
          
             Patients
          </a>
@@ -175,7 +177,7 @@ console.log(user);
           <Link to="/admin/Staff" style={{textDecoration: 'none'}}>
          
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Staff" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ` } style={{textDecoration:'none', color: pathname == "/admin/Staff" ? "blue" :"black"}}>
         
             Staff
         </a>
@@ -192,7 +194,7 @@ console.log(user);
           <Link to="/admin/Complains" style={{textDecoration: 'none'}}>
          
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Complains" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link` } style={{textDecoration:'none', color: pathname == "/admin/Complains" ? "blue" :"black"}}>
         
             Complains
             </a>
@@ -247,8 +249,7 @@ console.log(user);
           horizontal: 'center',
         }}
       >
-        <MenuItem >Profile</MenuItem>
-        <MenuItem >My account</MenuItem>
+      
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
        
