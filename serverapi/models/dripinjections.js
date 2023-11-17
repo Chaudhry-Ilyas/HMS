@@ -4,21 +4,22 @@ const { ObjectId } = require('mongodb');
 
 const dripinjSchema = new Schema({
 
-    NurseID: ObjectId,
-    PatientID: ObjectId,
+   
+    nurseId: { type: Schema.Types.ObjectId, ref: 'Nurse' },
+    patientId: { type: Schema.Types.ObjectId, ref: 'Patients' },
     type: {
-        type: string,
+        type: String,
         trim: true,
         required: true
     },
     
     dosage: {
-        type: string,
+        type: String,
         trim: true,
         required: true
         },
         duration: {
-            type: string,
+            type: String,
             trim: true,
             required: true
             },
