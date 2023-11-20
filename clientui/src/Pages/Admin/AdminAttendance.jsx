@@ -25,6 +25,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const AdminAttendance = () => {
   const options = ["Present", "Absent", "Leave"];
@@ -191,10 +193,74 @@ const AdminAttendance = () => {
     const delAttendance = async(id) => {
       try {
         const data = await axios.delete(`http://localhost:8000/attendance/${id}`)
+        getAttendances()
+
       } catch (error) {
         
       }
     }
+    const GenerateAttendanceReport = (e) => {
+      e.preventDefault();
+  
+      
+      // fetchAllConfirmedReservations();
+      // // ReactPDF.renderToStream(<MyDocument />);
+      const pdfDoc = new jsPDF();
+  
+      pdfDoc.setFont("helvetica", "bold");
+      pdfDoc.setFontSize(18);
+  
+      pdfDoc.text("Attendance Report", 70, 22);
+  
+      const pageWidth = pdfDoc.internal.pageSize.width;
+      const pageHeight = pdfDoc.internal.pageSize.height;
+      pdfDoc.rect(10, 10, pageWidth - 20, pageHeight - 20);
+  
+      pdfDoc.setFont("helvetica", "normal");
+      pdfDoc.setFontSize(14);
+  
+      pdfDoc.text(
+        `Total Attendances:   ${attendancesArray.length}`,
+        20,
+        35
+      );
+  
+      const displayFields = [
+        "username",
+        "date",
+        "status",
+       
+      ];
+  
+      const fieldDisplayNameMap = {
+        username: "UserName",
+        date: "Date",
+        status: "Status",
+
+      };
+  
+      const headers = displayFields.map((field) => fieldDisplayNameMap[field]);
+      // const headers = displayFields;
+      const tableData = attendancesArray.map((attendance) =>
+        displayFields.map((header) => {
+       
+            return attendance[header];
+  
+          
+        
+        })
+      );
+  
+      // // Add table to the PDF
+      pdfDoc.autoTable({
+        head: [headers],
+        body: tableData,
+        startY: 40,
+      });
+  
+      // // Save the PDF or open it in a new tab
+      pdfDoc.save("report.pdf");
+    };
   return (
     <div>
        <div className="relative bg-neutral-white w-full h-[1024px] overflow-hidden text-left text-sm text-neutral-gray-dark font-h5-bold-20-26-02px">
@@ -328,7 +394,18 @@ const AdminAttendance = () => {
       </Table>
     </TableContainer>
 
-
+    {/* <div>
+        <img 
+        
+          className="absolute top-[14px] left-[820px] rounded-[10px] w-[89px] h-[46px]"
+          alt=""
+          src="/rectangle-1.svg"
+        />
+        <b className="absolute top-[25px] left-[800px] text-xl tracking-[0.2px] leading-[26px] inline-block text-neutral-white w-[127px] h-[62px]">
+          Generate Pdf
+        </b>
+        </div> */}
+        <Button onClick={GenerateAttendanceReport} variant="secondary" className="absolute top-[14px] left-[800px] rounded-[10px] w-[150px] h-[46px]"> <b>Generate Pdf</b></Button>
       
         <div onClick={handleShow}>
         <img 
