@@ -192,6 +192,8 @@ const NurseAttendance = () => {
     const delAttendance = async(id) => {
       try {
         const data = await axios.delete(`http://localhost:8000/attendance/${id}`)
+        getAttendances()
+
       } catch (error) {
         
       }
