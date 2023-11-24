@@ -1,7 +1,8 @@
 import Appointment from"../models/appointments"
 import { hashPassword } from "../utils/auth";
 import User from '../models/user'
-
+import appointments_audit from "../models/appointments_audit";
+const BackendController= require('./backend')
 export const AddAppointment = async (req, res) => {
 
 try {
@@ -104,6 +105,7 @@ export const editAppointment = async (req, res) => {
     try {
         const  appointmentId  = req.params.id;
         const updatedData = req.body;
+        const oldAppointment = await Appointment.findById(appointmentId);
     
         // Update the doctor's information
         const updatedAppointment = await Appointment.findByIdAndUpdate({_id:appointmentId}, updatedData, { new: true });
@@ -111,11 +113,20 @@ export const editAppointment = async (req, res) => {
         if (!updatedAppointment) {
           return res.status(404).json({ error: 'Appointment not found' });
         }
-    
+        const newAppointment = await Appointment.findById(appointmentId);
+
+        await appointments_audit.create({
+            appointmentId: appointmentId,
+            action: 'update',
+            oldValue: oldAppointment.toObject(),
+            newValue: newAppointment.toObject(),
+        });
         // Update the associated user information
        
         res.status(200).json({ Appointment : updatedAppointment});
       } catch (error) {
+        BackendController.AddBackEndLog("Appointment.js","EditAppointment",error.message)
+
         res.status(500).json({ error: 'An error occurred while updating the Appointment.' });
       }
 }
