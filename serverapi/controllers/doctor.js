@@ -1,6 +1,8 @@
 import User from "../models/user";
 import Doctor from"../models/doctors"
 import { hashPassword } from "../utils/auth";
+import doctors_audit from "../models/doctors_audit";
+const BackendController = require("./backend")
 
 export const AddDoctor = async (req, res) => {
 
@@ -87,6 +89,7 @@ export const editDoctor = async (req, res) => {
         const  doctorId  = req.params.id;
         const updatedData = req.body;
         // Update the doctor's information
+      const oldDoctor = await Doctor.findById(doctorId);
         
         const updatedDoctor = await Doctor.findByIdAndUpdate({_id:doctorId}, updatedData, { new: true });
         console.log(updatedData);
@@ -98,9 +101,20 @@ export const editDoctor = async (req, res) => {
         // Update the associated user information
         const userId = updatedDoctor.user;
         const updatedUser = await User.findByIdAndUpdate({_id:userId}, updatedData, { new: true });
+
+        const newDoctor = await Doctor.findById(doctorId);
+
+        await doctors_audit.create({
+            doctorsId: doctorId,
+            action: 'update',
+            oldValue: oldDoctor.toObject(),
+            newValue: newDoctor.toObject(),
+        });
+
     
         res.status(200).json({ Doctor: updatedDoctor, User: updatedUser });
       } catch (error) {
+        BackendController.AddBackEndLog("Doctor.js","EditDoctor",error.message)
         res.status(500).json({ error: 'An error occurred while updating the doctor.' });
       }
 }
