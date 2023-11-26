@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 
+
+
+
 const complainSchema = new Schema({
 
    
@@ -42,3 +45,4 @@ const complainSchema = new Schema({
 );
 
 export default mongoose.model('Complains', complainSchema);
+

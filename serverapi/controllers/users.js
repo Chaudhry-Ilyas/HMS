@@ -93,6 +93,43 @@ export const getUser = async (req, res) => {
         
     }
 }
+export const getUsersId = async (req, res) => {
+    // console.log("Hello");
+    try {
+        const users = await user.findOne({username:req.params.id})
+  
+      res.status(200).json(users._id);
+  
+    } catch (error) {
+        
+    }
+  }
+
+  export const getUsersName = async (req, res) => {
+    // console.log("Hello");
+    try {
+        const users = await user.find()
+  
+        const usersName = users.map(u => u.username);
+      res.status(200).json(usersName);
+  
+    } catch (error) {
+        
+    }
+  }
+
+  export const getSingleUsersName = async (req, res) => {
+    // console.log("Hello");
+    try {
+        const users = await user.findOne({_id: req.params.id})
+  
+        
+      res.status(200).json(users.username);
+  
+    } catch (error) {
+        
+    }
+  }
 
 export const delUser = async (req, res) => {
     console.log("Hello");
