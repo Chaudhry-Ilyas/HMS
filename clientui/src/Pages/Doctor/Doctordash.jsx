@@ -1,5 +1,7 @@
 import { React, useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { getLoggedUser } from '../../utils/getLoggedInUser';
+
 
 import {
   AppstoreOutlined,
@@ -10,13 +12,14 @@ import {
 } from "@ant-design/icons";
 import { toast } from 'react-toastify';
 import { Context } from '../../context';
-import { getLoggedUser } from '../../utils/getLoggedInUser';
+import { getLoggedUser } from '../../utils/getLoggedInUser'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 
 
 function Doctordash() {
+  // const user = getLoggedUser()
   const {pathname} = useLocation(); 
 
   const navigate = useNavigate();
@@ -81,7 +84,7 @@ console.log(user);
         <div className="absolute w-full top-[86px] right-[0px] left-[0px] h-[88px] text-neutral-gray">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
           <div className="absolute w-[calc(100%_-_48px)] top-[calc(50%_-_30px)] left-[24px] tracking-[0.1px] leading-[20px] inline-block">
-            MEDICINE
+            Doctor
           </div>
           <Link to="/doctor/Dashboard" style={{textDecoration: 'none'}}> 
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_+_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
@@ -105,11 +108,11 @@ console.log(user);
         </div>
         <div className="absolute w-full top-[174px] right-[0px] left-[0px] h-12">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Doctors" style={{textDecoration: 'none'}}>
+          <Link to="/doctor/Appointments" style={{textDecoration: 'none'}}>
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Doctors" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ${pathname === "/doctor/Appointments" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
           
-            Doctors
+            Appointments
             </a>
           </b>
           </Link>
@@ -121,10 +124,10 @@ console.log(user);
         </div>
         <div className="absolute w-full top-[222px] right-[0px] left-[0px] h-12">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Nurses" style={{textDecoration: 'none'}}>
+          <Link to="/doctor/Nurses" style={{textDecoration: 'none'}}>
           
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Nurses" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ${pathname === "/doctor/Nurses" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
          
             Nurses
          </a>
@@ -138,10 +141,10 @@ console.log(user);
         </div>
         <div className="absolute w-full top-[270px] right-[0px] left-[0px] h-12">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Attendance" style={{textDecoration: 'none'}}>
+          <Link to="/doctor/Attendance" style={{textDecoration: 'none'}}>
           
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Attendance" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ${pathname === "/doctor/Attendance" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
          
             Attendance
             </a>
@@ -155,10 +158,10 @@ console.log(user);
         </div>
         <div className="absolute w-full top-[318px] right-[0px] left-[0px] h-12">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Patients" style={{textDecoration: 'none'}}>
+          <Link to="/doctor/Patients" style={{textDecoration: 'none'}}>
          
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Patients" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ${pathname === "/doctor/Patients" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
          
             Patients
          </a>
@@ -170,14 +173,15 @@ console.log(user);
             src="/icon--icofont--medical--disabled--default.svg"
           />
         </div>
+        
         <div className="absolute w-full top-[366px] right-[0px] left-[0px] h-12">
           <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Staff" style={{textDecoration: 'none'}}>
+          <Link to="/doctor/Profile" style={{textDecoration: 'none'}}>
          
           <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Staff" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
+          <a href="" className={`nav-link ${pathname === "/doctor/Profile" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
         
-            Staff
+            Profile
         </a>
           </b>
           </Link>
@@ -185,34 +189,6 @@ console.log(user);
             className="absolute top-[calc(50%_-_8px)] left-[24px] w-4 h-4 overflow-hidden"
             alt=""
             src="/icon--icofont--web--bank--credit-card.svg"
-          />
-        </div>
-        <div className="absolute w-full top-[414px] right-[0px] left-[0px] h-12">
-          <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <Link to="/admin/Complains" style={{textDecoration: 'none'}}>
-         
-          <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-          <a href="" className={`nav-link ${pathname === "/admin/Complains" &&" text-primary-default"}` } style={{textDecoration:'none'}}>
-        
-            Complains
-            </a>
-          </b>
-          </Link>
-          <img
-            className="absolute top-[calc(50%_-_8px)] left-[24px] w-4 h-4 overflow-hidden"
-            alt=""
-            src="/icon--icofont--web--question--circled.svg"
-          />
-        </div>
-        <div className="absolute w-full top-[470px] right-[0px] left-[0px] h-12">
-          <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] bg-neutral-white" />
-          <b className="absolute w-[calc(100%_-_76px)] top-[calc(50%_-_10px)] left-[52px] tracking-[0.1px] leading-[20px] inline-block">
-            Help
-          </b>
-          <img
-            className="absolute top-[calc(50%_-_8px)] left-[24px] w-4 h-4 overflow-hidden"
-            alt=""
-            src="/icon--icofont--web--question--circled.svg"
           />
         </div>
         <img
@@ -247,8 +223,8 @@ console.log(user);
           horizontal: 'center',
         }}
       >
-        <MenuItem >Profile</MenuItem>
-        <MenuItem >My account</MenuItem>
+        <MenuItem onClick={()=>navigate("/doctor/Profile")}>Profile</MenuItem>
+       
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
        
