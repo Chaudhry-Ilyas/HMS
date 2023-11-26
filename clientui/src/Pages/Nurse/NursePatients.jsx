@@ -151,6 +151,8 @@ const NursePatients = () => {
     const delPatient = async(id) => {
       try {
         const data = await axios.delete(`http://localhost:8000/patients/${id}`)
+        getPatients()
+
       } catch (error) {
         
       }
